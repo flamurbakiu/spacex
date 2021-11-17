@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialLaunchesState = { data: [], loading: true, error: '' };
+const initialLaunchesState = { launchesData: [], loading: true, error: '' };
 
 const launchesSlice = createSlice({
   name: 'launches',
   initialState: initialLaunchesState,
   reducers: {
-    setData(state, action) {
-      state.data = [...state.data, ...action.payload];
+    setLaunchesData(state, action) {
+      state.launchesData = [...action.payload];
     },
     setLoading(state, action) {
       state.loading = action.payload;

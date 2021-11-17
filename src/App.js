@@ -1,38 +1,84 @@
 import { gql, useQuery } from '@apollo/client';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Launches from './components/Launches';
-import { launchesActions } from './store/launches-slice';
+// import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-const GET_LAUNCHES = gql`
+import Layout from './components/layout/Layout';
+
+import AllLaunches from './pages/AllLaunches';
+import NotFound from './pages/NotFound';
+import LoadingSpinner from './components/UI/LoadingSpinner';
+
+import { launchesActions } from './store/launches-slice';
+import { companyActions } from './store/company-slice';
+import AboutCompany from './pages/AboutCompany';
+
+const API_DATA = gql`
   {
     launchesPast(limit: 10) {
+      id
       mission_name
+      links {
+        article_link
+        video_link
+        flickr_images
+      }
       rocket {
-        rocket_name
+        rocket {
+          name
+          country
+          description
+          company
+        }
       }
-      ships {
-        name
-        home_port
-        image
-      }
+    }
+    company {
+      name
+      ceo
+      summary
     }
   }
 `;
 
 function App() {
-  const { data, loading, error } = useQuery(GET_LAUNCHES);
+  const { data, loading, error } = useQuery(API_DATA);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!loading) {
-      dispatch(launchesActions.setData(data.launchesPast));
+      dispatch(launchesActions.setLaunchesData(data.launchesPast));
+      dispatch(companyActions.setCompanyData(data.company));
       dispatch(launchesActions.setLoading(loading));
       dispatch(launchesActions.setError(error));
     }
-  });
+  }, [data, loading, error, dispatch]);
 
-  return <Launches />;
+  return (
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route
+            exact
+            path='/'
+            element={loading ? <LoadingSpinner /> : <AllLaunches />}
+          />
+          <Route
+            exact
+            path='/launches'
+            element={loading ? <LoadingSpinner /> : <AllLaunches />}
+          />
+
+          <Route
+            exact
+            path='/about'
+            element={loading ? <LoadingSpinner /> : <AboutCompany />}
+          />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
+  );
 }
 
 export default App;
