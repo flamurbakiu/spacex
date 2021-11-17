@@ -14,7 +14,7 @@ const defaultVideoLink = 'https://youtu.be/J442-ti-Dhg';
 const LaunchesList = (props) => {
   return (
     <Fragment>
-      <ul className={classes.list}>
+      <div className={classes.list}>
         {props.launches.map((launch) => (
           <LaunchItem
             key={launch.id}
@@ -38,7 +38,7 @@ const LaunchesList = (props) => {
             rockets={launch.rocket.rocket}
           />
         ))}
-      </ul>
+      </div>
     </Fragment>
   );
 };

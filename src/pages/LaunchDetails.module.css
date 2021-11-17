@@ -1,0 +1,21 @@
+.details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  flex: 1;
+  text-align: right;
+}
+
+.image {
+  width: 90%;
+  height: 400px;
+  border-radius: 20px;
+}

@@ -2,7 +2,7 @@
   width: 100%;
   height: 5rem;
   display: flex;
-  padding: 0 10%;
+  padding: 0 15%;
   justify-content: space-between;
   align-items: center;
   background-color: #008080;
@@ -11,6 +11,7 @@
 .logo {
   font-size: 2rem;
   color: white;
+  text-decoration: underline;
 }
 
 .nav ul {
@@ -21,13 +22,23 @@
 }
 
 .nav li {
-  margin-left: 1.5rem;
+  margin-left: 2.5rem;
   font-size: 1.25rem;
+}
+
+.nav .li-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav .li-item span {
+  margin-left: 10px;
 }
 
 .nav a {
   text-decoration: none;
-  color: #88dfdf;
+  color: #a3e6e6;
 }
 
 .nav a:hover,

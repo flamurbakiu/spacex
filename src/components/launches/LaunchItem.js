@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import classes from './LaunchItem.module.css';
 
 const LaunchItem = (props) => {
-  // console.log(props.rockets);
-
   return (
-    <li className={classes.item}>
+    <div className={classes.item}>
       <figure>
         <blockquote>
           <p>{props.missionName}</p>
@@ -18,8 +16,8 @@ const LaunchItem = (props) => {
             Read the article
           </a>
         </blockquote>
-        <Link className='btn' to='/'>
-          View Rockets
+        <Link className='btn' to={'/launches/details/' + props.id}>
+          View Details
         </Link>
       </figure>
 
@@ -31,7 +29,7 @@ const LaunchItem = (props) => {
       >
         <img src={props.image} alt={props.missionName} />
       </a>
-    </li>
+    </div>
   );
 };
 

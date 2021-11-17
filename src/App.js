@@ -13,10 +13,11 @@ import LoadingSpinner from './components/UI/LoadingSpinner';
 import { launchesActions } from './store/launches-slice';
 import { companyActions } from './store/company-slice';
 import AboutCompany from './pages/AboutCompany';
+import LaunchDetails from './pages/LaunchDetails';
 
 const API_DATA = gql`
   {
-    launchesPast(limit: 10) {
+    launchesPast(limit: 20) {
       id
       mission_name
       links {
@@ -27,9 +28,16 @@ const API_DATA = gql`
       rocket {
         rocket {
           name
-          country
-          description
           company
+          description
+          country
+          first_flight
+          mass {
+            kg
+          }
+          height {
+            meters
+          }
         }
       }
     }
@@ -67,6 +75,11 @@ function App() {
             exact
             path='/launches'
             element={loading ? <LoadingSpinner /> : <AllLaunches />}
+          />
+
+          <Route
+            path='/launches/details/:id'
+            element={loading ? <LoadingSpinner /> : <LaunchDetails />}
           />
 
           <Route
