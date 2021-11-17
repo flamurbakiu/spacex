@@ -10,10 +10,6 @@
   width: 500px;
 }
 
-.item:last-of-type {
-  border-bottom: none;
-}
-
 .item figure {
   margin: 0;
   height: 200px;
