@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import classes from './MainNavigation.module.css';
+import './MainNavigation.css';
 
 const MainNavigation = () => {
   return (
@@ -14,7 +15,7 @@ const MainNavigation = () => {
           <li>
             <NavLink
               to='/launches'
-              activeClassName={classes.active}
+              activeclassName='active'
               className={classes['li-item']}
             >
               <FlightTakeoffIcon />
@@ -24,7 +25,7 @@ const MainNavigation = () => {
           <li>
             <NavLink
               to='/about'
-              activeClassName={classes.active}
+              activeClassName='active'
               className={classes['li-item']}
             >
               <HomeWorkIcon />

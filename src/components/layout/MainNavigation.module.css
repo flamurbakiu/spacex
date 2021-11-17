@@ -40,9 +40,3 @@
   text-decoration: none;
   color: #a3e6e6;
 }
-
-.nav a:hover,
-.nav a:active,
-.nav a.active {
-  color: #e6fcfc;
-}
