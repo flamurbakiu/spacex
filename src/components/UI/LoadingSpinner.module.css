@@ -5,7 +5,8 @@
   justify-content: center;
   align-items: center;
 }
-.spinner:after {
+
+.spinner::after {
   content: ' ';
   display: block;
   width: 64px;
@@ -16,6 +17,7 @@
   border-color: teal transparent teal transparent;
   animation: spinner 1.2s linear infinite;
 }
+
 @keyframes spinner {
   0% {
     transform: rotate(0deg);

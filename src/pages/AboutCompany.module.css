@@ -5,30 +5,23 @@
   align-items: center;
 }
 
-.left {
+.details .left {
   text-align: center;
 }
 
-.left h2 {
+.details .left h2 {
   font-size: 2rem;
 }
 
-.left p {
+.details .left p {
   font-size: 1.2rem;
 }
 
-.right {
+.details .right {
   text-align: center;
 }
 
-.image {
+.details .right .image {
   width: 100%;
   border-bottom: 2px solid #008080;
-}
-
-@media screen and (max-width: 850px) {
-  .details {
-  }
-  .left {
-  }
 }

@@ -1,7 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-// import { Route, Switch } from 'react-router-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Layout from './components/layout/Layout';
