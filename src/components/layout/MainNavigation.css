@@ -1,5 +1,4 @@
-a:hover,
-a:active,
+.nav a:active,
 a.active {
   color: #e6fcfc;
   border-bottom: 2px solid #e6fcfc;

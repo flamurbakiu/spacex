@@ -56,8 +56,8 @@ function LaunchDetails() {
             : defaultVideoLink
         }
         width='100%'
-        height='600px'
-        style={{ marginTop: '50px' }}
+        height='500px'
+        className={classes.yt}
       />
     </Fragment>
   );
