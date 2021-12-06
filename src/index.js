@@ -6,9 +6,31 @@ import App from './App';
 import store from './store/index';
 import './index.css';
 
+// const client = new ApolloClient({
+//   uri: 'https://api.spacex.land/graphql/',
+//   cache: new InMemoryCache(),
+// });
+
 const client = new ApolloClient({
   uri: 'https://api.spacex.land/graphql/',
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          launchesPast: {
+            // Don't cache separate results based on
+            // any of this field's arguments.
+            keyArgs: false,
+            // Concatenate the incoming list items with
+            // the existing list items.
+            merge(existing = [], incoming) {
+              return [...existing, ...incoming];
+            },
+          },
+        },
+      },
+    },
+  }),
 });
 
 ReactDOM.render(

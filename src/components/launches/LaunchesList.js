@@ -12,6 +12,14 @@ const defaultArticleLink =
 const defaultVideoLink = 'https://youtu.be/J442-ti-Dhg';
 
 const LaunchesList = (props) => {
+  const loadMoreHandler = () => {
+    props.fetchMore({
+      variables: {
+        offset: props.launches.length,
+      },
+    });
+  };
+
   return (
     <Fragment>
       <div className={classes.list}>
@@ -38,6 +46,9 @@ const LaunchesList = (props) => {
             rockets={launch.rocket.rocket}
           />
         ))}
+        <button onClick={loadMoreHandler} className='btn'>
+          Load more
+        </button>
       </div>
     </Fragment>
   );

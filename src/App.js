@@ -16,7 +16,7 @@ import LaunchDetails from './pages/LaunchDetails';
 
 const API_DATA = gql`
   {
-    launchesPast(limit: 20) {
+    launchesPast(limit: 10) {
       id
       mission_name
       links {
@@ -49,7 +49,13 @@ const API_DATA = gql`
 `;
 
 function App() {
-  const { data, loading, error } = useQuery(API_DATA);
+  // const { data, loading, error } = useQuery(API_DATA);
+  const { loading, error, data, fetchMore } = useQuery(API_DATA, {
+    variables: {
+      offset: 0,
+      limit: 10,
+    },
+  });
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -68,12 +74,24 @@ function App() {
           <Route
             exact
             path='/'
-            element={loading ? <LoadingSpinner /> : <AllLaunches />}
+            element={
+              loading ? (
+                <LoadingSpinner />
+              ) : (
+                <AllLaunches fetchMore={fetchMore} />
+              )
+            }
           />
           <Route
             exact
             path='/launches'
-            element={loading ? <LoadingSpinner /> : <AllLaunches />}
+            element={
+              loading ? (
+                <LoadingSpinner />
+              ) : (
+                <AllLaunches fetchMore={fetchMore} />
+              )
+            }
           />
 
           <Route
